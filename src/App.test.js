@@ -1,10 +1,15 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import App from "./App";
+import { render, screen, fireEvent } from '@testing-library/react';
+import App from './App';
 
-test("renders App component", () => {
+
+test('initial dataType state is provinces', () => {
   render(<App />);
-
-  const appElement = screen.getByText("Hello Canada");
-  expect(appElement).toBeInTheDocument();
+  expect(screen.getByText('Provinces')).toBeInTheDocument();
 });
+
+test('changes dataType to territories on menu item click', () => {
+  render(<App />);
+  fireEvent.click(screen.getByText('Territories'));
+});
+
+
